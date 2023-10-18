@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Effect</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+        }
+
+        #text {
+            border-right: 0.15em solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0;
+            letter-spacing: 0.15em;
+            font-size: 60px;
+        }
+
+        #text2 {
+            border-right: 0.15em solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0;
+            letter-spacing: 0.15em;
+            font-size: 25px;
+        }
+
+        .group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="group">
+        <div id="text"></div>
+        <div id="text2"></div>
+    </div>
+
+    <script>
+        const textElement = document.getElementById('text');
+        const textElement2 = document.getElementById('text2');
+        const textToDisplay = `Wie dit leest trekt een bak`;
+        const subTitles = [
+            "Whoever reads this, finishes their drink", // English
+            "Qui lit ceci finit sa boisson", // French
+            "Wer das liest, trinkt aus", // German
+            "Chi legge questo, finisce la sua bevanda", // Italian
+            "Quien lea esto, termina su bebida", // Spanish
+            "Quem ler isso, termina sua bebida", // Portuguese
+            "Кто прочтет это, допивает свой напиток", // Russian
+            "この文を読む人は飲み物を飲み干す", // Japanese
+            "이것을 읽는 사람은 음료를 다 마신다", // Korean
+            "谁读这个，喝完他的饮料", // Chinese Simplified
+            "誰讀這個，喝完他的飲料", // Chinese Traditional
+            "Kdo to čte, dokončí svůj nápoj", // Czech
+            "Den som läser detta, dricker upp sin dryck", // Swedish
+            "Hvis du læser dette, skal du drikke din drink op", // Danish
+            "Kuka lukee tämän, juo juomansa loppuun", // Finnish
+            "Όποιος διαβάσει αυτό, τελειώνει το ποτό του", // Greek
+            "Kim bunu okursa, içeceğini bitirir", // Turkish
+            "Kto przeczyta to, kończy swój napój", // Polish
+            "Cel care citește asta, își termină băutura", // Romanian
+            "Aki ezt olvassa, kiüríti az italát", // Hungarian
+            "Tko pročita ovo, završava svoje piće", // Croatian
+            "Ко прочита ово, завршава своје пиће", // Serbian
+            "Kas loeb seda, lõpetab oma joogi", // Estonian
+            "Kas šo lasa, izdzer savu dzērienu", // Latvian
+            "Kas skaitys tai, baigia savo gėrimą", // Lithuanian
+            "Който прочете това, завършва напитката си", // Bulgarian
+            "Cel care citează asta, își termină băutura", // Moldovan
+            "Хто прочитає це, завершує свій напій", // Ukrainian
+            "Ko pročita ovo, završava svoje piće", // Bosnian
+            "Kdo to prebere, konča svojo pijačo", // Slovenian
+            "Malibanon ini, tataposin ang kanyang inumin", // Filipino
+            "Siapa yang membaca ini, habiskan minumannya", // Indonesian
+            "Siapa yang membaca ini, habiskan minuman dia", // Malay
+            "ผู้ที่อ่านสิ่งนี้จะดื่มเสร็จสิ้น", // Thai
+            "Ai đọc cái này, hãy uống hết đồ uống của mình", // Vietnamese
+            "מי שקורא את זה, מסיים את המשקה שלו", // Hebrew
+            "من یہ پڑھے گا، اپنی مشروب ختم کرے گا", // Urdu
+            "من این را می‌خواند، نوشیدنی خود را تمام می‌کند", // Persian (Farsi)
+            "من قرأ هذا، ينهي مشروبه", // Arabic
+        ]
+        const subTitle = subTitles[Math.floor(Math.random() * subTitles.length)];
+        let currentIndex = 0;
+        let currentIndex2 = 0;
+
+        function typeLetter() {
+            if (currentIndex < textToDisplay.length) {
+                textElement.textContent += textToDisplay[currentIndex];
+                currentIndex++;
+            } else {
+                textElement.style.borderRight = 'none';
+            }
+            if (currentIndex2 < subTitle.length) {
+                textElement2.textContent += subTitle[currentIndex];
+                currentIndex2++;
+            } else {
+                textElement2.style.borderRight = 'none';
+            }
+
+            setTimeout(typeLetter, 200); // 200ms delay between each letter
+        }
+
+        window.onload = function() {
+            setTimeout(typeLetter, 1000);  // Start after a 1 second delay
+        }
+    </script>
+</body>
+</html>
