@@ -35,6 +35,14 @@
             font-size: 25px;
         }
 
+        #contact {
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0;
+            position: absolute;
+            bottom: 10px;
+        }
+
         .group {
             display: flex;
             flex-direction: column;
@@ -46,6 +54,7 @@
     <div class="group">
         <div id="text"></div>
         <div id="text2"></div>
+        <a id="contact" href="mailto:wieditleest@trekteenbak.nl">contact</a>
     </div>
 
     <script>
@@ -92,6 +101,26 @@
             "من یہ پڑھے گا، اپنی مشروب ختم کرے گا", // Urdu
             "من این را می‌خواند، نوشیدنی خود را تمام می‌کند", // Persian (Farsi)
             "من قرأ هذا، ينهي مشروبه", // Arabic
+            "A kī te pānui i tēnei, ka whakakapi i tāna inu", // Maori
+            "Sesiuwa lo lea, tapunia lona inu", // Samoan
+            "O tona lenna a bala la, a feletse metsi a gagwe", // Setswana (Tswana)
+            "Ọbụna onye gụọrọ ya, ọ ga-emecha mmiri ya", // Igbo
+            "Evê keca xwend, vexwarina xwe qedand", // Kurdish
+            "Ko e heluheluʻaki ʻeni, 'oku 'osi 'ene inu", // Tongan
+            "Өткән кеше буны укый алса, әйге ичеменен тамамлайды", // Tatar
+            "Ien der dit lêst, drinkt syn drankje op", // Frisian
+            "Kinsa nga nagbasa niini, humanon ang iyang inum", // Cebuano
+            "An té a léann sé seo, críochnaíonn sé a dheoch", // Irish Gaelic
+            "Bo dèanamh seo a leugh, crìochnaich e a dheoch", // Scottish Gaelic
+            "Ani hinon ni, lari ginumon", // Batak (Indonesia)
+            "Ku yimba uyo, akale masamba ake", // Chichewa
+            "Se wɔde no nka, ɔmmɔ nnidi no nyinaa", // Akan (Twi)
+            "Ki kati te pālegi ti, ki piŋi lē ti", // Tok Pisin (Papua New Guinea)
+            "Oba abayeza okuyikona, agenze okw'omwotto gwake", // Luganda
+            "जो यसलाई पढ्दछ, उ आफ्नो पेय पुरा गर्दछ", // Nepali
+            "এটি পড়া যারা, তারা তাদের পানি শেষ করে", // Assamese
+            "ਜੋ ਇਸ ਨੂੰ ਪੜ੍ਹਦਾ ਹੈ, ਉਹ ਆਪਣੀ ਪੀਣੀ ਖਤਮ ਕਰਦਾ ਹੈ", // Punjabi
+            "Οπότε διαβάζει αυτό, τελειώνει το ποτό του", // Maltese
         ]
         const subTitle = subTitles[Math.floor(Math.random() * subTitles.length)];
         let currentIndex = 0;
@@ -99,23 +128,31 @@
 
         function typeLetter() {
             if (currentIndex < textToDisplay.length) {
+                if(textToDisplay[currentIndex] === " ") {
+                    textElement.textContent += " ";
+                    currentIndex++;
+                }
                 textElement.textContent += textToDisplay[currentIndex];
                 currentIndex++;
             } else {
                 textElement.style.borderRight = 'none';
             }
             if (currentIndex2 < subTitle.length) {
-                textElement2.textContent += subTitle[currentIndex];
+                if(subTitle[currentIndex2] === " ") {
+                    textElement2.textContent += " ";
+                    currentIndex2++;
+                }
+                textElement2.textContent += subTitle[currentIndex2];
                 currentIndex2++;
             } else {
                 textElement2.style.borderRight = 'none';
             }
-
-            setTimeout(typeLetter, 200); // 200ms delay between each letter
         }
 
         window.onload = function() {
-            setTimeout(typeLetter, 1000);  // Start after a 1 second delay
+            setTimeout(() => {
+                setInterval(typeLetter, 150);
+            }, 800); 
         }
     </script>
 </body>
